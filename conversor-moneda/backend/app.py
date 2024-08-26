@@ -10,9 +10,11 @@ Para este caso vamos a tener 2 ocpiones en cuenta:
 https://www.exchangerate-api.com/ o https://openexchangerates.org/
 """
 
+
+# http://127.0.0.1:5000/convert?from=USD&to=EUR&amount=100 URL de prueba 
+
 api_key = 'e278246514e613608d97c59f'
 base_url = 'https://api.exchangerate-api.com/v4/latest/'
-#base_url = f'https://v6.exchangerate-api.com/v6/{api_key}/latest/USD'
 
 @app.route('/convert', methods=['GET'])
 def convert_currency():

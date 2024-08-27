@@ -1,6 +1,9 @@
 from flask import Flask , request, jsonify, render_template # importacion libreria
+from dotenv import load_dotenv
 import requests
+import os
 app = Flask(__name__) # Instancia
+load_dotenv()
 
 """
 En esta App vamos a necesitar consumir una API
@@ -13,7 +16,7 @@ https://www.exchangerate-api.com/ o https://openexchangerates.org/
 
 # http://127.0.0.1:5000/convert?from=USD&to=EUR&amount=100 URL de prueba 
 
-api_key = 'e278246514e613608d97c59f'
+api_key = os.getenv('API_KEY')
 base_url = 'https://api.exchangerate-api.com/v4/latest/'
 
 @app.route('/')

@@ -6,7 +6,6 @@ import datetime
 
 app = Flask(__name__)
 
-
 #Inicio de dependencias
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)

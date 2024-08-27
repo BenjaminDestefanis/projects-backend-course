@@ -1,4 +1,4 @@
-from flask import Flask , request, jsonify # importacion libreria
+from flask import Flask , request, jsonify, render_template # importacion libreria
 import requests
 app = Flask(__name__) # Instancia
 
@@ -16,12 +16,19 @@ https://www.exchangerate-api.com/ o https://openexchangerates.org/
 api_key = 'e278246514e613608d97c59f'
 base_url = 'https://api.exchangerate-api.com/v4/latest/'
 
-@app.route('/convert', methods=['GET'])
+@app.route('/')
+def index():
+    return render_template('index.html')  # Renderiza documentos html
+
+
+@app.route('/convert', methods=['POST'])
 def convert_currency():
     # Obtenemos los parametros de la solicitud
-    from_currency = request.args.get('from')  #Obtiene el codigo de la moneda de origen desde los parametros de la URL
-    to_currency = request.args.get('to') #Equivale el valor de la moneda a convertir
-    amount = float(request.args.get('amount')) #La cantidad
+
+    data = request.get_json()
+    from_currency = data['from'] #Obtiene el codigo de la moneda de origen desde los parametros de la URL
+    to_currency = data['to'] #Equivale el valor de la moneda a convertir
+    amount = float(data['amount']) #La cantidad
     
     #Solicitud a la API
     response = requests.get(f'{base_url}{from_currency}', params={'apikey': api_key})  # Solicitud a la API

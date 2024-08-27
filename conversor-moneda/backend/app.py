@@ -19,8 +19,15 @@ https://www.exchangerate-api.com/ o https://openexchangerates.org/
 api_key = os.getenv('API_KEY')
 base_url = 'https://api.exchangerate-api.com/v4/latest/'
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
+
+    # Testting
+    """ response = requests.get(f'{base_url}codes', params={'apikey': api_key})
+    data = response.json()
+    print(data)
+    print("ASD") """
+
     return render_template('index.html')  # Renderiza documentos html
 
 

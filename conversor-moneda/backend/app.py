@@ -19,15 +19,15 @@ https://www.exchangerate-api.com/ o https://openexchangerates.org/
 api_key = os.getenv('API_KEY')
 base_url = 'https://api.exchangerate-api.com/v4/latest/'
 
+
+def fecth_data():
+    response = requests.get(f'https://v6.exchangerate-api.com/v6/{api_key}/codes')
+    if response.status_code != 200:
+        return jsonify({'error': 'Invalid currency code or API request failed.'}), 400
+    data = response.json()
+
 @app.route('/', methods=['GET'])
 def index():
-
-    # Testting
-    """ response = requests.get(f'{base_url}codes', params={'apikey': api_key})
-    data = response.json()
-    print(data)
-    print("ASD") """
-
     return render_template('index.html')  # Renderiza documentos html
 
 
@@ -65,4 +65,5 @@ def convert_currency():
 
 
 if __name__ == '__main__':
+    fecth_data()
     app.run(debug=True)

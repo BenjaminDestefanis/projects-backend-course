@@ -5,6 +5,7 @@ document.getElementById('converter-form').addEventListener('submit', () => {
     const fromCurrency = document.getElementById('from-currency').value.toUpperCase()
     const toCurrency = document.getElementById('to-currency').value.toUpperCase()
 
+
     fetch('/convert', {
         method: 'POST',
         headers: {

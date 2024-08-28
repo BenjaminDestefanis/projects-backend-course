@@ -1,6 +1,8 @@
 from flask import Flask , request, jsonify, render_template # importacion libreria
 from routes import api_bp
+from config import ipapi
 from dotenv import load_dotenv
+from config import get_location
 import requests
 import os
 app = Flask(__name__) # Instancia
@@ -20,6 +22,7 @@ https://www.exchangerate-api.com/ o https://openexchangerates.org/
 api_key = os.getenv('API_KEY')
 base_url = os.getenv('BASE_URL')
 app.register_blueprint(api_bp)
+app.register_blueprint(ipapi)
 
 api_inicial_data = None
 

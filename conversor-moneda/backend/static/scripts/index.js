@@ -1,4 +1,20 @@
 
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('/get_location')
+    .then(response => {
+        if(!response.ok){
+            throw new Error('Network response was not of' + response.statusText)
+        }
+        return response.json()
+    })
+    .then(data => {
+        console.log(data)
+    })
+    .catch(error => {
+        console.error('Problema', error)
+    })
+})
+
 document.getElementById('converter-form').addEventListener('submit', () => {
     event.preventDefault()
 

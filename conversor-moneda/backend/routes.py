@@ -12,7 +12,7 @@ base_url = os.getenv('BASE_URL')
 def convert_currency():
     # Obtenemos los parametros de la solicitud
 
-    data = request.get_json()
+    data = request.get_json() # Recivo una solicitud desde el front-end (puede ser un script utilizando fetch u ajax etc.)
     from_currency = data['from'] #Obtiene el codigo de la moneda de origen desde los parametros de la URL
     to_currency = data['to'] #Equivale el valor de la moneda a convertir
     amount = float(data['amount']) #La cantidad

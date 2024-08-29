@@ -3,8 +3,24 @@ import requests
 import os
 
 api_bp = Blueprint('api', __name__)
+basic_data = Blueprint('bdata', __name__)
 api_key = os.getenv('API_KEY')
 base_url = os.getenv('BASE_URL')
+
+
+# Datos iniciales
+
+""" @basic_data.route('/', methods=['GET'])
+def request_basic_data():
+    response = requests.get(f'https://v6.exchangerate-api.com/v6/{api_key}/latest/USD')
+    data = response.json()
+
+    if response.status_code != 200:
+        return jsonify({'error': 'Invalid currency code or API request failed.'}), 400
+    
+    return jsonify({
+        'data':data
+    }) """
 
 
 # Conversion

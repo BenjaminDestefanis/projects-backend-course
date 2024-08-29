@@ -1,5 +1,22 @@
 
-document.addEventListener('DOMContentLoaded', () => {
+/* document.addEventListener('DOMContentLoaded', () => {
+    // Obtencion de datos generales
+    fetch('/')
+    .then(response => {
+        if(!response.ok){
+            throw new Error('Fallo la respuesta' + response.statusText)
+        } 
+        return response.json()
+    })
+    .then(data => {
+        console.log(data)
+    })
+    .catch(error => {
+        console.error('Problema carga de datos inciales', error)
+    })
+
+
+    // Obtencion de datos de localicalizacion
     fetch('/get_location')
     .then(response => {
         if(!response.ok){
@@ -13,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => {
         console.error('Problema', error)
     })
-})
+}) */
 
 document.getElementById('converter-form').addEventListener('submit', () => {
     event.preventDefault()

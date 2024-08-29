@@ -1,5 +1,5 @@
 from flask import Flask , request, jsonify, render_template # importacion libreria
-from routes import api_bp
+from routes import api_bp, basic_data
 from config import ipapi
 from dotenv import load_dotenv
 from config import get_location
@@ -23,24 +23,19 @@ api_key = os.getenv('API_KEY')
 base_url = os.getenv('BASE_URL')
 app.register_blueprint(api_bp)
 app.register_blueprint(ipapi)
+app.register_blueprint(basic_data)
 
-api_inicial_data = None
+#api_inicial_data = None
 
 
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')  # Renderiza documentos html
 
-def fecth_data():
-    global api_inicial_data
-    try:
-        response = requests.get(f'https://v6.exchangerate-api.com/v6/{api_key}Y/latest/USD')
-        api_inicial_data = response.json()
-
-    except Exception as e:
-        print('Error')
-
+""" def test():
+    return jsonify({
+        'data_test': 'data_test'
+    }) """
 
 if __name__ == '__main__':
-    fecth_data()
     app.run(debug=True)
